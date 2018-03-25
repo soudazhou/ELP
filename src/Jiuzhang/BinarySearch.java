@@ -45,7 +45,7 @@ public class BinarySearch {
         while (start + 1 < end) {
             mid = start + (end - start) / 2;
             if (array[mid] == target) {
-                end = mid;
+                start = mid;
             } else if (array[mid] < target) {
                 start = mid;
             } else {
@@ -136,7 +136,7 @@ public class BinarySearch {
         while (start + 1 < end) {
             mid = start + (end - start) / 2;
             if (A[mid] == target) {
-                end = mid;
+                start = mid;
             } else if (A[mid] < target) {
                 start = mid;
             } else {
@@ -147,11 +147,13 @@ public class BinarySearch {
         if (A[end] == target) {
             ans[1] = end;
         } else if(A[start] == target) {
-            ans[0] = start;
+            ans[1] = start;
         } else {
             ans[0] = ans[1] = -1;
             return ans;
         }
         return ans;
     }
+
+    //search insert position http://www.lintcode.com/en/problem/search-insert-position/
 }
