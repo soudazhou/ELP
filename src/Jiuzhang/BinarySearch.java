@@ -26,7 +26,7 @@ public class BinarySearch {
             return start;
         }
 
-        if(array[end] == target) {
+        if (array[end] == target) {
             return end;
         }
 
@@ -53,7 +53,7 @@ public class BinarySearch {
             }
         }
         /*check end first to get last occurences */
-        if(array[end] == target) {
+        if (array[end] == target) {
             return end;
         }
 
@@ -86,7 +86,7 @@ public class BinarySearch {
             }
         }
         /*check end first to get last occurences */
-        if(array[end] == target) {
+        if (array[end] == target) {
             return end;
         }
 
@@ -122,14 +122,14 @@ public class BinarySearch {
 
         if (A[start] == target) {
             ans[0] = start;
-        } else if(A[end] == target) {
+        } else if (A[end] == target) {
             ans[0] = end;
         } else {
             ans[0] = ans[1] = -1;
             return ans;
         }
 
-     //search for right bound
+        //search for right bound
         start = 0;
         end = A.length - 1;
         //search for left bound
@@ -146,7 +146,7 @@ public class BinarySearch {
 
         if (A[end] == target) {
             ans[1] = end;
-        } else if(A[start] == target) {
+        } else if (A[start] == target) {
             ans[1] = start;
         } else {
             ans[0] = ans[1] = -1;
@@ -156,4 +156,43 @@ public class BinarySearch {
     }
 
     //search insert position http://www.lintcode.com/en/problem/search-insert-position/
+    public int searchInsert(int[] A, int target) {
+        int start = 0;
+        int end = A.length - 1;
+        int mid;
+
+        if (A.length == 0) {
+            return 0;
+        }
+
+        if (target < A[0]) {
+            return 0;
+        }
+
+        //find the last occurence if exist
+        while (start + 1 < end) {
+            mid = start + (end - start) / 2;
+            if (A[mid] == target) {
+                return mid;
+            } else if (A[mid] < target) {
+                start = mid;
+            } else {
+                end = mid;
+            }
+        }
+
+        if (A[end] == target) {
+            return end;
+        }
+
+        if (A[end] < target) {
+            return end + 1;
+        }
+
+        if (A[start] == target) {
+            return start;
+        }
+
+        return start + 1;
+    }
 }
